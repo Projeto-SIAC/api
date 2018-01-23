@@ -16,6 +16,7 @@ from decouple import config, Csv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -78,14 +79,15 @@ WSGI_APPLICATION = 'siac.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES['default'] = dj_database_url.parse(
-    config(
-        'DATABASE_URL',
-        default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-    ),
-    conn_max_age=600
-)
-
+DATABASES = {
+    'default': dj_database_url.parse(
+        config(
+            'DATABASE_URL',
+            default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+        ),
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
