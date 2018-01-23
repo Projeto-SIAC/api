@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'graphene_django',
 ]
 
 MIDDLEWARE = [
@@ -154,3 +155,11 @@ X_FRAME_OPTIONS = config('X_FRAME_OPTIONS', default='DENY')
 
 CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL', cast=bool, default='False')
 CORS_ORIGIN_WHITELIST = config('CORS_ORIGIN_WHITELIST', cast=Csv(), default='')
+
+
+# Graphene
+# http://docs.graphene-python.org/projects/django/en/latest/
+
+GRAPHENE = {
+    'SCHEMA': 'siac.schema.schema',
+}
