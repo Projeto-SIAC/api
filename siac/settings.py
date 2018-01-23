@@ -33,6 +33,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(), default='')
 
 # Application definition
 
+AUTH_USER_MODEL = 'management.User'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
