@@ -1,0 +1,22 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+django = "*"
+graphene = "*"
+graphene-django = "*"
+django-cors-headers = "*"
+python-decouple = "*"
+gunicorn = "*"
+"psycopg2" = "*"
+whitenoise = "*"
+dj-database-url = "*"
+
+
+[dev-packages]
+
