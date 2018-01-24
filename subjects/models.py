@@ -19,7 +19,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250)
     parent = models.ForeignKey('self', verbose_name='Parent topic', on_delete=models.PROTECT, null=True, blank=True)
-    subject = models.ForeignKey(Subject, related_name='subjects', on_delete=models.PROTECT)
+    subject = models.ForeignKey(Subject, related_name='topics', on_delete=models.PROTECT)
 
     def __str__(self):
         return self.name

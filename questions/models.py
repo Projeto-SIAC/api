@@ -15,10 +15,10 @@ class Difficulty(models.Model):
 class Question(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    description = models.CharField()
+    description = models.CharField(max_length=250)
     objective = models.CharField(max_length=250)
     comment = models.CharField(max_length=250, blank=True, null=True)
-    answer = models.CharField(blank=True, null=True)
+    answer = models.CharField(max_length=250, blank=True, null=True)
     difficulty = models.ForeignKey(Difficulty, related_name='questions', on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -30,10 +30,23 @@ class Question(models.Model):
         return self.description
 
 
+class QuestionTopic(models.Model):
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    topic = models.CharField(max_length=100)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('question', 'topic',)
+
+    def __str__(self):
+        return 'QuestionTopic <{}.{}>'.format(self.question.id, self.topic)
+
+
 class Option(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    description = models.CharField()
+    description = models.CharField(max_length=250)
     comment = models.CharField(max_length=250, blank=True, null=True)
     is_correct = models.BooleanField()
     question = models.ForeignKey(Question, related_name='options', on_delete=models.CASCADE)
@@ -45,7 +58,7 @@ class Option(models.Model):
 class Attachment(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField()
+    title = models.CharField(max_length=100)
     contents = models.TextField()
     source = models.CharField(max_length=250, blank=True, null=True)
     question = models.ForeignKey(Question, related_name='attachments', on_delete=models.CASCADE)

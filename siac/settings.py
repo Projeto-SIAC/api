@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'graphene_django',
+    'management',
+    'questions',
+    'subjects',
+    'assessment_tests'
 ]
 
 MIDDLEWARE = [
