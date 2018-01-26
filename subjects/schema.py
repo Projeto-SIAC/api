@@ -15,11 +15,19 @@ class TopicType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
+    subject = graphene.Field(SubjectType, id=graphene.String())
     subjects = graphene.List(SubjectType)
+    topic = graphene.Field(TopicType, id=graphene.String())
     topics = graphene.List(TopicType)
+
+    def resolve_subject(self, info, id, **kwargs):
+        return Subject.objects.get(pk=id)
 
     def resolve_subjects(self, info, **kwargs):
         return Subject.objects.all()
+
+    def resolve_topic(self, info, id, **kwargs):
+        return Topic.objects.get(pk=id)
 
     def resolve_topics(self, info, **kwargs):
         return Topic.objects.all()
