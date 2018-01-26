@@ -4,6 +4,9 @@ from django.db import models
 
 class Difficulty(models.Model):
 
+    class Meta:
+        verbose_name_plural = 'difficulties'
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250, blank=True, null=True)

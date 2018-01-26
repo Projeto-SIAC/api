@@ -10,7 +10,7 @@ class DifficultyType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    difficulty = graphene.Field(DifficultyType, id=graphene.String())
+    difficulty = graphene.Field(DifficultyType, id=graphene.UUID())
     difficulties = graphene.List(DifficultyType)
 
     def resolve_difficulty(self, info, id, **kwargs):

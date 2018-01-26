@@ -1,3 +1,4 @@
 from django.contrib import admin
+from questions.models import Difficulty, Question, Option, Attachment
 
-# Register your models here.
+admin.site.register(Difficulty)

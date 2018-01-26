@@ -15,9 +15,9 @@ class TopicType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    subject = graphene.Field(SubjectType, id=graphene.String())
+    subject = graphene.Field(SubjectType, id=graphene.UUID())
     subjects = graphene.List(SubjectType)
-    topic = graphene.Field(TopicType, id=graphene.String())
+    topic = graphene.Field(TopicType, id=graphene.UUID())
     topics = graphene.List(TopicType)
 
     def resolve_subject(self, info, id, **kwargs):
