@@ -2,9 +2,10 @@ import graphene
 
 import management.schema
 import subjects.schema
+import questions.schema
 
 
-class Query(management.schema.Query, subjects.schema.Query, graphene.ObjectType):
+class Query(management.schema.Query, subjects.schema.Query, questions.schema.Query, graphene.ObjectType):
     pass
 
 

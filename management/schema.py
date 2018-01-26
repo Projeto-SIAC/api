@@ -22,7 +22,7 @@ class TeacherType(DjangoObjectType):
 
     def resolve_subjects(self, info, **kwargs):
         subjects = [s.subject for s in self.teachersubject_set.all()]
-        return resolve_subjects(pk__in=subjects)
+        return resolve_subjects(subjects)
 
 
 class Query(graphene.ObjectType):
