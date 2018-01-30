@@ -60,11 +60,22 @@ class Option(models.Model):
 
 class Attachment(models.Model):
 
+    IMAGE = 'IMG'
+    TEXT = 'TEXT'
+    CODE = 'CODE'
+
+    ATTACHMENT_KIND = (
+        (IMAGE, 'Image'),
+        (TEXT, 'Text'),
+        (CODE, 'Code'),
+    )
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=100)
     contents = models.TextField()
     source = models.CharField(max_length=250, blank=True, null=True)
     question = models.ForeignKey(Question, related_name='attachments', on_delete=models.CASCADE)
+    kind = models.CharField(max_length=10, choices=ATTACHMENT_KIND)
 
     def __str__(self):
         return self.title
