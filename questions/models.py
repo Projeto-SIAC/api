@@ -60,7 +60,7 @@ class Option(models.Model):
 
 class Attachment(models.Model):
 
-    IMAGE = 'IMG'
+    IMAGE = 'IMAGE'
     TEXT = 'TEXT'
     CODE = 'CODE'
 
