@@ -3,7 +3,7 @@ from graphene_django import DjangoObjectType
 
 from management.models import User
 
-from subjects.schema import SubjectType
+from subjects.types import SubjectType
 from subjects.resolvers import resolve_subjects
 
 

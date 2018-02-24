@@ -1,5 +1,6 @@
 import graphene
 
+from management.models import User
 from management.types import UserType, TeacherType
 
 
