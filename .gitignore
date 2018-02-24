@@ -103,3 +103,7 @@ ENV/
 # Docker
 
 /volumes
+
+# VSCode
+
+.vscode/
