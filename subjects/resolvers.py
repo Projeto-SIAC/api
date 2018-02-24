@@ -13,5 +13,5 @@ def resolve_topic(pk):
     return Topic.objects.get(pk=pk)
 
 
-def resolve_topic(pks):
+def resolve_topics(pks):
     return Topic.objects.filter(pk__in=pks)

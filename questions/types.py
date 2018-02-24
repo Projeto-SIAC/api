@@ -2,8 +2,12 @@ import graphene
 from graphene_django import DjangoObjectType
 
 from questions.models import Difficulty, Question, Option, Attachment
-from management.resolvers import resolve_user
+
 from management.types import TeacherType
+from management.resolvers import resolve_user
+
+from subjects.types import TopicType
+from subjects.resolvers import resolve_topics
 
 
 class DifficultyType(DjangoObjectType):
@@ -26,6 +30,7 @@ class AttachmentType(DjangoObjectType):
 
 class QuestionType(DjangoObjectType):
 
+    topics = graphene.List(TopicType)
     created_by = graphene.Field(TeacherType)
 
     class Meta:
@@ -33,3 +38,7 @@ class QuestionType(DjangoObjectType):
 
     def resolve_created_by(self, info, **kwargs):
         return resolve_user(self.created_by)
+
+    def resolve_topics(self, info, **kwargs):
+        topics = [t.topic for t in self.questiontopic_set.all()]
+        return resolve_topics(topics)
