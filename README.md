@@ -4,11 +4,11 @@
 
 > Sistema Interativo de Avaliação de Conhecimento.
 
-## Autores
+## Authors
 
 * [Felipe Pontes](https://github.com/felipemfp)
 * [Francisco Bento](https://github.com/chicobentojr)
 
-## Licença
+## License
 
-Este projeto é licenciado pela __GNU GENERAL PUBLIC LICENSE__ - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+This project is licensed under the __GNU GENERAL PUBLIC LICENSE__ - see the [LICENSE](LICENSE) file for details.
