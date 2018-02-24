@@ -1,5 +1,12 @@
 from django.contrib import admin
-from questions.models import Difficulty, Question, Option, Attachment
+from questions.models import Difficulty, Question, Option, Attachment, QuestionTopic
+
+
+class TopicInline(admin.TabularInline):
+
+    model = QuestionTopic
+    verbose_name = 'topic'
+    verbose_name_plural = 'topics'
 
 
 class OptionInline(admin.TabularInline):
@@ -15,7 +22,7 @@ class AttachmentInline(admin.StackedInline):
 
 class QuestionAdmin(admin.ModelAdmin):
 
-    inlines = (OptionInline, AttachmentInline, )
+    inlines = (TopicInline, OptionInline, AttachmentInline, )
 
 
 admin.site.register(Difficulty)
