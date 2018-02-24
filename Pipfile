@@ -16,6 +16,7 @@ gunicorn = "*"
 "psycopg2" = "*"
 whitenoise = "*"
 dj-database-url = "*"
+django-graphql-jwt = "*"
 
 
 [dev-packages]

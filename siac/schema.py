@@ -9,8 +9,8 @@ class Query(management.schema.Query, subjects.schema.Query, questions.schema.Que
     pass
 
 
-class Mutation(graphene.ObjectType):
+class Mutation(management.schema.Mutation, graphene.ObjectType):
     pass
 
 
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, mutation=Mutation)

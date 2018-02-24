@@ -3,7 +3,8 @@ from graphene_django import DjangoObjectType
 
 from questions.models import Difficulty, Question, Option, Attachment
 from management.resolvers import resolve_user
-from management.schema import TeacherType
+from management.types import TeacherType
+from management.decorators import login_required
 
 
 class DifficultyType(DjangoObjectType):
@@ -36,20 +37,25 @@ class QuestionType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
+
     difficulty = graphene.Field(DifficultyType, id=graphene.UUID())
     difficulties = graphene.List(DifficultyType)
 
     question = graphene.Field(QuestionType, id=graphene.UUID())
     questions = graphene.List(QuestionType)
 
+    @login_required
     def resolve_difficulty(self, info, id, **kwargs):
         return Difficulty.objects.get(pk=id)
 
+    @login_required
     def  resolve_difficulties(self, info, **kwargs):
         return Difficulty.objects.all()
 
+    @login_required
     def resolve_question(self, info, id, **kwargs):
         return Question.objects.get(pk=id)
 
+    @login_required
     def resolve_questions(self, info, **kwargs):
         return Question.objects.all()
