@@ -8,3 +8,16 @@ services:
       - ./volumes/db:/var/lib/postgresql/data
     ports:
       - 5432:5432
+
+  api:
+    build:
+      context: .
+    command: python manage.py runserver 0:8000
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
