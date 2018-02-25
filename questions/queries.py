@@ -1,19 +1,19 @@
 import graphene
 
-from questions.models import Difficulty, Question
-from questions.types import DifficultyType, QuestionType
+from questions.models import Level, Question
+from questions.types import LevelType, QuestionType
 from management.decorators import login_required
 
-class DifficultyQuery(graphene.ObjectType):
+class LevelQuery(graphene.ObjectType):
 
-    difficulty = graphene.Field(DifficultyType, id=graphene.UUID())
-    difficulties = graphene.List(DifficultyType)
+    level = graphene.Field(LevelType, id=graphene.UUID())
+    levels = graphene.List(LevelType)
 
-    def resolve_difficulty(self, info, id, **kwargs):
-        return Difficulty.objects.get(pk=id)
+    def resolve_level(self, info, id, **kwargs):
+        return Level.objects.get(pk=id)
 
-    def  resolve_difficulties(self, info, **kwargs):
-        return Difficulty.objects.all()
+    def  resolve_levels(self, info, **kwargs):
+        return Level.objects.all()
 
 
 class QuestionQuery(graphene.ObjectType):
