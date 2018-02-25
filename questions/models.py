@@ -29,6 +29,10 @@ class Question(models.Model):
     archived_at = models.DateTimeField(blank=True, null=True)
     created_by = models.CharField(max_length=100)
 
+    @property
+    def is_subjective(self):
+        return self.options.count() == 0
+
     def __str__(self):
         return self.description
 

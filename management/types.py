@@ -9,6 +9,8 @@ from subjects.resolvers import resolve_subjects
 
 class UserType(DjangoObjectType):
 
+    is_teacher = graphene.Boolean(source='is_teacher')
+
     class Meta:
         model = User
 

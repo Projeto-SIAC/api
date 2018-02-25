@@ -7,6 +7,10 @@ class User(AbstractUser):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
+    @property
+    def is_teacher(self):
+        return self.teachersubject_set.count() > 0
+
 
 class TeacherSubject(models.Model):
 
