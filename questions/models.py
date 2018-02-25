@@ -2,12 +2,10 @@ import uuid
 from django.db import models
 
 
-class Difficulty(models.Model):
-
-    class Meta:
-        verbose_name_plural = 'difficulties'
+class Level(models.Model):
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    index = models.IntegerField()
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=250, blank=True, null=True)
 
@@ -22,12 +20,16 @@ class Question(models.Model):
     objective = models.CharField(max_length=250)
     comment = models.CharField(max_length=250, blank=True, null=True)
     answer = models.CharField(max_length=250, blank=True, null=True)
-    difficulty = models.ForeignKey(Difficulty, related_name='questions', on_delete=models.PROTECT)
+    level = models.ForeignKey(Level, related_name='questions', on_delete=models.PROTECT)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_used_at = models.DateTimeField(blank=True, null=True)
     archived_at = models.DateTimeField(blank=True, null=True)
     created_by = models.CharField(max_length=100)
+
+    @property
+    def is_subjective(self):
+        return self.options.count() == 0
 
     def __str__(self):
         return self.description
