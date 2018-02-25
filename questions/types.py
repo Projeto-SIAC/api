@@ -1,7 +1,7 @@
 import graphene
 from graphene_django import DjangoObjectType
 
-from questions.models import Difficulty, Question, Option, Attachment
+from questions.models import Level, Question, Option, Attachment
 
 from management.types import TeacherType
 from management.resolvers import resolve_user
@@ -10,10 +10,10 @@ from subjects.types import TopicType
 from subjects.resolvers import resolve_topics
 
 
-class DifficultyType(DjangoObjectType):
+class LevelType(DjangoObjectType):
 
     class Meta:
-        model = Difficulty
+        model = Level
 
 
 class OptionType(DjangoObjectType):

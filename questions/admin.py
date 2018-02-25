@@ -1,5 +1,5 @@
 from django.contrib import admin
-from questions.models import Difficulty, Question, Option, Attachment, QuestionTopic
+from questions.models import Level, Question, Option, Attachment, QuestionTopic
 
 
 class TopicInline(admin.TabularInline):
@@ -25,5 +25,5 @@ class QuestionAdmin(admin.ModelAdmin):
     inlines = (TopicInline, OptionInline, AttachmentInline, )
 
 
-admin.site.register(Difficulty)
+admin.site.register(Level)
 admin.site.register(Question, QuestionAdmin)
