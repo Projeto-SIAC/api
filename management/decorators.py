@@ -33,7 +33,7 @@ def teacher_required(f):
     @wraps(f)
     @context(f)
     def wrapper(context, *args, **kwargs):
-        if context.user.is_anonymous or not context.user.is_teacher:
+        if not context.user.is_active or context.user.is_anonymous or not context.user.is_teacher:
             raise Exception('You have to be a teacher to perform this action')
         return f(*args, **kwargs)
     return wrapper
