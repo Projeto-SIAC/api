@@ -32,6 +32,7 @@ class QuestionType(DjangoObjectType):
 
     topics = graphene.List(TopicType)
     created_by = graphene.Field(TeacherType)
+    is_subjective = graphene.Boolean(source='is_subjective')
 
     class Meta:
         model = Question
