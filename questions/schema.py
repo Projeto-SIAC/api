@@ -1,11 +1,11 @@
 import graphene
 
 from questions.queries import DifficultyQuery, QuestionQuery
-import questions.mutations
+from questions.mutations import DifficultyMutation, QuestionMutation
 
 
 class Query(DifficultyQuery, QuestionQuery, graphene.ObjectType):
     pass
 
-class Mutation(questions.mutations.Mutation, graphene.ObjectType):
+class Mutation(DifficultyMutation, QuestionMutation, graphene.ObjectType):
     pass

@@ -2,6 +2,7 @@ import graphene
 from questions.types import QuestionType, DifficultyType
 from questions.models import Question, Difficulty
 from management.models import User
+from management.decorators import login_required
 
 class CreateQuestion(graphene.Mutation):
     question = graphene.Field(QuestionType)
@@ -13,14 +14,10 @@ class CreateQuestion(graphene.Mutation):
         answer = graphene.String()
         difficulty_id = graphene.String()
 
+    @login_required
     def mutate(self, info, description, objective, comment, answer, difficulty_id):
         user = info.context.user
-
-        if not user.id:
-            raise Exception('Not logged!')
-
         difficulty = Difficulty.objects.filter(id=difficulty_id).first()
-
         question = Question(description=description,
                             objective=objective,
                             comment=comment,
@@ -30,6 +27,10 @@ class CreateQuestion(graphene.Mutation):
         question.save()
 
         return CreateQuestion(question=question)
+
+class QuestionMutation(graphene.ObjectType):
+    create_question = CreateQuestion.Field()
+
 
 class CreateDifficulty(graphene.Mutation):
     difficulty = graphene.Field(DifficultyType)
@@ -44,6 +45,5 @@ class CreateDifficulty(graphene.Mutation):
 
         return CreateDifficulty(difficulty=difficulty)
 
-class Mutation(graphene.ObjectType):
-    create_question = CreateQuestion.Field()
+class DifficultyMutation(graphene.ObjectType):
     create_difficulty = CreateDifficulty.Field()
