@@ -3,6 +3,7 @@ import graphql_jwt
 from management.types import UserType
 from management.models import User
 
+
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
 
@@ -20,6 +21,7 @@ class CreateUser(graphene.Mutation):
         user.save()
 
         return CreateUser(user=user)
+
 
 class UserMutation(graphene.ObjectType):
     create_user = CreateUser.Field()

@@ -5,11 +5,21 @@ import subjects.schema
 import questions.schema
 
 
-class Query(management.schema.Query, subjects.schema.Query, questions.schema.Query, graphene.ObjectType):
+class Query(
+    management.schema.Query,
+    subjects.schema.Query,
+    questions.schema.Query,
+    graphene.ObjectType
+):
     pass
 
 
-class Mutation(subjects.schema.Mutation, management.schema.Mutation, questions.schema.Mutation, graphene.ObjectType):
+class Mutation(
+    subjects.schema.Mutation,
+    management.schema.Mutation,
+    questions.schema.Mutation,
+    graphene.ObjectType
+):
     pass
 
 

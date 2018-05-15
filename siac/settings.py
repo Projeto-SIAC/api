@@ -106,16 +106,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation' +
+                '.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation' +
+                '.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation' +
+                '.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation' +
+                '.NumericPasswordValidator',
     },
 ]
 
@@ -167,8 +171,12 @@ X_FRAME_OPTIONS = config('X_FRAME_OPTIONS', default='DENY')
 
 # Django CORS Headers
 
-CORS_ORIGIN_ALLOW_ALL = config('CORS_ORIGIN_ALLOW_ALL', cast=bool, default='False')
-CORS_ORIGIN_WHITELIST = config('CORS_ORIGIN_WHITELIST', cast=Csv(), default='')
+CORS_ORIGIN_ALLOW_ALL = config(
+    'CORS_ORIGIN_ALLOW_ALL', cast=bool, default='False'
+)
+CORS_ORIGIN_WHITELIST = config(
+    'CORS_ORIGIN_WHITELIST', cast=Csv(), default=''
+)
 
 
 # Graphene

@@ -8,5 +8,5 @@ class Query(UserQuery, TeacherQuery, graphene.ObjectType):
     pass
 
 
-class Mutation(UserMutation, JWTMutation , graphene.ObjectType):
+class Mutation(UserMutation, JWTMutation, graphene.ObjectType):
     pass

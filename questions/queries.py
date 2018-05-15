@@ -4,6 +4,7 @@ from questions.models import Level, Question
 from questions.types import LevelType, QuestionType
 from management.decorators import teacher_required
 
+
 class LevelQuery(graphene.ObjectType):
 
     level = graphene.Field(LevelType, id=graphene.UUID())
@@ -12,7 +13,7 @@ class LevelQuery(graphene.ObjectType):
     def resolve_level(self, info, id, **kwargs):
         return Level.objects.get(pk=id)
 
-    def  resolve_levels(self, info, **kwargs):
+    def resolve_levels(self, info, **kwargs):
         return Level.objects.all()
 
 

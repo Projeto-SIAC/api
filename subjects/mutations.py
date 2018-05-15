@@ -1,7 +1,6 @@
 import graphene
-from graphene_django import DjangoObjectType
 
-from subjects.models import Subject, Topic
+from subjects.models import Subject
 from subjects.types import SubjectType
 
 from management.decorators import teacher_required
