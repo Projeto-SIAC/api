@@ -7,18 +7,17 @@ name = "pypi"
 
 [packages]
 
-django = "*"
+Django = "*"
 graphene = "*"
 graphene-django = "*"
 django-cors-headers = "*"
 python-decouple = "*"
 gunicorn = "*"
-"psycopg2" = "*"
 whitenoise = "*"
 dj-database-url = "*"
 django-graphql-jwt = "*"
+"psycopg2-binary" = "*"
 
 
 [dev-packages]
 
-pylint = "*"
