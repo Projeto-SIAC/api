@@ -13,6 +13,6 @@ install:
 jobs:
   include:
     - stage: lint
-      script: flake . --exclude migrations
+      script: flake8 . --exclude migrations
     - stage: test
       script: python manage.py test

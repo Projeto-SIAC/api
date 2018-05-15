@@ -7,7 +7,7 @@ name = "pypi"
 
 [packages]
 
-Django = "*"
+django = "*"
 graphene = "*"
 graphene-django = "*"
 django-cors-headers = "*"
