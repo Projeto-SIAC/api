@@ -19,6 +19,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return wrapper
 
+
 def staff_member_required(f):
     @wraps(f)
     @context(f)
@@ -29,11 +30,14 @@ def staff_member_required(f):
         raise Exception('You do not have permission to perform this action')
     return wrapper
 
+
 def teacher_required(f):
     @wraps(f)
     @context(f)
     def wrapper(context, *args, **kwargs):
-        if not context.user.is_active or context.user.is_anonymous or not context.user.is_teacher:
+        if (context.user.is_anonymous or
+                not context.user.is_active or
+                not context.user.is_teacher):
             raise Exception('You have to be a teacher to perform this action')
         return f(*args, **kwargs)
     return wrapper

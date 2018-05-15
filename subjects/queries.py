@@ -1,6 +1,4 @@
 import graphene
-from graphene_django import DjangoObjectType
-
 from subjects.models import Subject, Topic
 from subjects.types import SubjectType, TopicType
 

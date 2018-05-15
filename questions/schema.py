@@ -7,5 +7,6 @@ from questions.mutations import LevelMutation, QuestionMutation
 class Query(LevelQuery, QuestionQuery, graphene.ObjectType):
     pass
 
+
 class Mutation(LevelMutation, QuestionMutation, graphene.ObjectType):
     pass

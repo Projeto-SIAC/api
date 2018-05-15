@@ -21,3 +21,4 @@ django-graphql-jwt = "*"
 
 [dev-packages]
 
+"flake8" = "*"

@@ -20,7 +20,9 @@ class Question(models.Model):
     objective = models.CharField(max_length=250)
     comment = models.CharField(max_length=250, blank=True, null=True)
     answer = models.CharField(max_length=250, blank=True, null=True)
-    level = models.ForeignKey(Level, related_name='questions', on_delete=models.PROTECT)
+    level = models.ForeignKey(
+        Level, related_name='questions', on_delete=models.PROTECT
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_used_at = models.DateTimeField(blank=True, null=True)
@@ -54,7 +56,9 @@ class Option(models.Model):
     description = models.CharField(max_length=250)
     comment = models.CharField(max_length=250, blank=True, null=True)
     is_correct = models.BooleanField()
-    question = models.ForeignKey(Question, related_name='options', on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        Question, related_name='options', on_delete=models.CASCADE
+    )
 
     def __str__(self):
         return self.description
@@ -76,7 +80,9 @@ class Attachment(models.Model):
     title = models.CharField(max_length=100)
     contents = models.TextField()
     source = models.CharField(max_length=250, blank=True, null=True)
-    question = models.ForeignKey(Question, related_name='attachments', on_delete=models.CASCADE)
+    question = models.ForeignKey(
+        Question, related_name='attachments', on_delete=models.CASCADE
+    )
     kind = models.CharField(max_length=10, choices=ATTACHMENT_KIND)
 
     def __str__(self):
